@@ -4,10 +4,16 @@ class Tasks extends React.Component {
 
     render() {
         return (
-            // {CATEGORIES.map(category=> <button>{category}</button>)}
           <div className ="tasks">
               <h5>Tasks</h5>
-            { this.props.taskArray.map(task=> <div className="task"><div className="label">{task.category}</div> <div className="text">{task.text}</div></div>)}
+              <form class="new-task-form">
+                  <input placeholder="New task details" type="text"></input>
+                  <select>
+                {this.props.catArray.map(category => <option>{category}</option>)}
+                  </select>
+                  <input type="submit" value="Add Task" />
+              </form>
+            { this.props.taskArray.map(task=> <div className="task"><div className="label">{task.category}</div> <div className="text">{task.text}</div><button className="delete">X</button></div>)}
         </div>  
         )
     }

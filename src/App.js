@@ -64,7 +64,7 @@ class App extends React.Component {
         <h2>My tasks</h2>  
         {/* send that to child component categories */}
         <Categories catArray={CATEGORIES} change={this.changeCategories} />
-        <Tasks taskArray={this.filterCategories()} />
+        <Tasks catArray={CATEGORIES} taskArray={this.filterCategories()} />
       </div>
     );
   }
