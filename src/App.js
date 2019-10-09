@@ -48,6 +48,15 @@ class App extends React.Component {
     })
   }
 
+  removeTask = updatedTasks => {
+    console.log(updatedTasks)
+    let allMyTasks = this.state.tasks.filter(task=> task.text !== updatedTasks)
+    this.setState({
+      tasks: allMyTasks, 
+      category: this.state.category
+    })
+  }
+
   // setState function
   changeCategories = (name) => {
     this.setState({
@@ -71,7 +80,7 @@ class App extends React.Component {
         <h2>My tasks</h2>  
         {/* send that to child component categories */}
         <Categories catArray={CATEGORIES} change={this.changeCategories} />
-        <Tasks catArray={CATEGORIES} taskArray={this.filterCategories()} addTask={this.addNewTask} />
+        <Tasks catArray={CATEGORIES} taskArray={this.filterCategories()} addTask={this.addNewTask} removeATask={this.removeTask} />
       </div>
     );
   }

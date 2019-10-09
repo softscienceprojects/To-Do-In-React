@@ -2,9 +2,11 @@ import React from 'react'
 
 class Tasks extends React.Component {
 
-    handleClick = (e) => {
+    handleDeleteClick = (e) => {
         // I know this doesn't REALLY work but the demo didn't either
-        e.target.parentNode.remove()
+        let removeTask = e.target.parentNode.children[1].innerText
+        this.props.removeATask(removeTask)
+       // e.target.parentNode.remove()
     }
 
     handleSubmit = (event) => {
@@ -13,8 +15,8 @@ class Tasks extends React.Component {
             text: event.target.children[0].value,
             category: event.target.children[1].value
         }
-        console.log(newTask)
         this.props.addTask(newTask);
+        event.target.reset();
     }
 
     // taskChange = (event) => {
@@ -31,7 +33,7 @@ class Tasks extends React.Component {
                   </select>
                   <input type="submit" value="Add Task" />
               </form>
-            { this.props.taskArray.map(task=> <div className="task"><div className="label" >{task.category}</div> <div className="text">{task.text}</div><button className="delete" onClick={(e)=> this.handleClick(e)}>X</button></div>)}
+            { this.props.taskArray.map(task=> <div className="task"><div className="label" >{task.category}</div> <div className="text">{task.text}</div><button className="delete" onClick={(e)=> this.handleDeleteClick(e)}>X</button></div>)}
         </div>  
         )
     }
