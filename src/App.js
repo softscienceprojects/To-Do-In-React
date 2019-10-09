@@ -41,6 +41,13 @@ class App extends React.Component {
     category: 'All'
   }
 
+  addNewTask = obj => {
+    this.setState({
+      tasks: [...this.state.tasks, obj], 
+      category: this.state.category
+    })
+  }
+
   // setState function
   changeCategories = (name) => {
     this.setState({
@@ -64,7 +71,7 @@ class App extends React.Component {
         <h2>My tasks</h2>  
         {/* send that to child component categories */}
         <Categories catArray={CATEGORIES} change={this.changeCategories} />
-        <Tasks catArray={CATEGORIES} taskArray={this.filterCategories()} />
+        <Tasks catArray={CATEGORIES} taskArray={this.filterCategories()} addTask={this.addNewTask} />
       </div>
     );
   }

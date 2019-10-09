@@ -10,7 +10,7 @@ class Categories extends React.Component {
     render() {
         return (
           <div className ="categories">
-                {/* // in cate component - on Click function that handles the butotn click */}
+                {/* // in create component - on Click function that handles the butotn click */}
             { this.props.catArray.map(category=> <button onClick={(e)=> this.handleClick(e)}>{category}</button>)}
         </div>  
         )
